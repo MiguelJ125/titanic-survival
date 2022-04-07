@@ -55,7 +55,7 @@ def predict_survival(sex, age, fare):
     df = encode_fares(df)
     df = encode_ages(df)
     pred = clf.predict_proba(df)[0]
-    return {'Muere': float(pred[0]), /n'Sobrevive': float(pred[1])}
+    return {'Muere': float(pred[0]), 'Sobrevive': float(pred[1])}
     
 sex = gr.inputs.Radio(['Mujer', 'Varon'], label="Sex")
 age = gr.inputs.Slider(minimum=0, maximum=120, default=22, label="Edad")
