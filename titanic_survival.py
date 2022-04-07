@@ -55,12 +55,12 @@ def predict_survival(sex, age, fare):
     df = encode_fares(df)
     df = encode_ages(df)
     pred = clf.predict_proba(df)[0]
-    return {'Muere': float(pred[0]), 'Sobrevive': float(pred[1])}
+    return {'Muere': float(pred[0]), /n'Sobrevive': float(pred[1])}
     
 sex = gr.inputs.Radio(['Mujer', 'Varon'], label="Sex")
 age = gr.inputs.Slider(minimum=0, maximum=120, default=22, label="Edad")
 fare = gr.inputs.Slider(minimum=0, maximum=200, default=100, label="Tarifa (british pounds)")
 
-gr.Interface(predict_survival, [sex, age, fare], "label", live=True, thumbnail="https://raw.githubusercontent.com/gradio-app/hub-titanic/master/thumbnail.png", analytics_enabled=False,
+gr.Interface(predict_survival, [sex, age, fare], "textbox", live=True, thumbnail="https://raw.githubusercontent.com/gradio-app/hub-titanic/master/thumbnail.png", analytics_enabled=False,
     title="Sobreviviendo al Titanic", description="Cual es la probabilidad de sobrevivir al famoso accidente del titanic? Depende de indicadores demograficos como se muestra a continuacion.").launch();
 
